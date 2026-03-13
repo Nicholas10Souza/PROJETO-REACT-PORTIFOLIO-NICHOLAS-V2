@@ -8,4 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss(), // 2. Adiciona aqui
   ],
+  base: "/PROJETO-REACT-PORTIFOLIO-NICHOLAS-V2/", // 3. ADICIONE ESTA LINHA AQUI
 })
