@@ -69,27 +69,29 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -10 }}
-              className="group bg-white/5 border border-white/10 overflow-hidden hover:border-magnate-gold/40 transition-all duration-500"
+              className="group bg-white/5 border border-white/10 overflow-hidden hover:border-magnate-gold/40 transition-all duration-500 rounded-2xl cursor-pointer"
             >
               {/* Container da Imagem */}
-              <div className="h-56 overflow-hidden relative">
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
+              <div className="relative aspect-video overflow-hidden">
+                {/* Overlay de cor: Mais escuro por padrão, clareia no toque/hover */}
+                <div className="absolute inset-0 bg-black/60 group-hover:bg-transparent group-active:bg-transparent transition-colors duration-500 z-10" />
+                
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-active:grayscale-0 group-hover:scale-110 group-active:scale-110 transition-all duration-700"
                 />
               </div>
 
               {/* Conteúdo do Card */}
-              <div className="p-8">
+              <div className="p-6 md:p-8">
                 <span className="text-magnate-gold text-[10px] uppercase tracking-widest font-bold">
                   {project.category}
                 </span>
-                <h3 className="text-2xl font-bold text-white mt-2 mb-4 group-hover:text-magnate-gold transition-colors">
+                <h3 className="text-xl md:text-2xl font-bold text-white mt-2 mb-4 group-hover:text-magnate-gold transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-magnate-muted text-sm mb-6 leading-relaxed">
+                <p className="text-gray-400 text-sm mb-6 leading-relaxed line-clamp-2">
                   {project.description}
                 </p>
                 <a 
