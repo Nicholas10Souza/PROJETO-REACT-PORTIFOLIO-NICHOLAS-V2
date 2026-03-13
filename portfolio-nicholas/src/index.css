@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* Configurações Globais */
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  /* Suas cores personalizadas para o padrão Nicholas.Dev */
+  --color-magnate-gold: #E1C168;
+  --color-magnate-bg: #0A0A0A;
+  --color-magnate-muted: #A1A1AA;
+  
+  /* Gradiente de Luxo */
+  --background-image-gold-gradient: linear-gradient(45deg, #E1C168, #B8860B);
+}
+
+@layer base {
+  body {
+    @apply bg-magnate-bg text-white antialiased;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+  }
+}
