@@ -74,7 +74,8 @@ const Projects = () => {
           </motion.p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Adicionei grid-flow-row-dense e auto-cols-fr para forçar colunas iguais */}
+        <div className="grid grid-cols-1 md:grid-cols-2 grid-flow-row-dense md:auto-cols-fr gap-8">
           {projects.map((project, index) => (
             <motion.div 
               key={index}
@@ -84,8 +85,8 @@ const Projects = () => {
               whileHover={{ y: -10 }}
               className="group bg-white/5 border border-white/10 overflow-hidden hover:border-magnate-gold/40 transition-all duration-500 rounded-2xl cursor-pointer"
             >
-              {/* Container da Imagem */}
-              <div className="relative aspect-video overflow-hidden">
+              {/* AJUSTE AQUI: Container da Imagem com w-full h-auto */}
+              <div className="relative aspect-video overflow-hidden w-full h-auto">
                 {/* Overlay de cor: Mais escuro por padrão, clareia no toque/hover */}
                 <div className="absolute inset-0 bg-black/60 group-hover:bg-transparent group-active:bg-transparent transition-colors duration-500 z-10" />
                 
@@ -97,40 +98,38 @@ const Projects = () => {
               </div>
 
               {/* Conteúdo do Card */}
-<div className="p-6 md:p-8">
-  <span className="text-magnate-gold text-[10px] uppercase tracking-widest font-bold">
-    {project.category}
-  </span>
-  
-  <h3 className="text-xl md:text-2xl font-bold text-white mt-2 mb-4 group-hover:text-magnate-gold transition-colors">
-    {project.title}
-  </h3>
-  
-  <p className="text-gray-400 text-sm mb-6 leading-relaxed line-clamp-2">
-    {project.description}
-  </p>
+              <div className="p-6 md:p-8">
+                <span className="text-magnate-gold text-[10px] uppercase tracking-widest font-bold">
+                  {project.category}
+                </span>
+                <h3 className="text-xl md:text-2xl font-bold text-white mt-2 mb-4 group-hover:text-magnate-gold transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-gray-400 text-sm mb-6 leading-relaxed line-clamp-2">
+                  {project.description}
+                </p>
 
-  {/* COLOQUE AQUI: Badges de Tecnologia */}
-  <div className="flex flex-wrap gap-2 mb-6">
-    {project.tags.map((tag) => (
-      <span 
-        key={tag} 
-        className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-magnate-gold font-medium uppercase tracking-wider"
-      >
-        {tag}
-      </span>
-    ))}
-  </div>
+                {/* Badges de Tecnologia */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tags.map((tag) => (
+                    <span 
+                      key={tag} 
+                      className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-magnate-gold font-medium uppercase tracking-wider"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
 
-  <a 
-    href={project.link} 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="inline-flex items-center gap-2 text-white text-xs font-bold hover:gap-4 transition-all"
-  >
-    ACESSAR PROJETO <ExternalLink size={14} className="text-magnate-gold" />
-  </a>
-</div>
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-white text-xs font-bold hover:gap-4 transition-all"
+                >
+                  ACESSAR PROJETO <ExternalLink size={14} className="text-magnate-gold" />
+                </a>
+              </div>
             </motion.div>
           ))}
         </div>
