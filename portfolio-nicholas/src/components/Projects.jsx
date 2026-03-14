@@ -5,38 +5,51 @@ import { ExternalLink } from 'lucide-react';
 const projects = [
   {
     title: "Irmãos Encanadores",
-    category: "Landing Page • JS",
+    category: "Landing Page • Prestação de serviço",
     image: new URL('../assets/mario.png', import.meta.url).href,
     description: "Site impactante para Mario & Luigi com vídeo de fundo e formulário funcional.",
-    link: "https://nicholas10souza.github.io/PROJETO-MARIO-ENCANADOR/"
+    link: "https://nicholas10souza.github.io/PROJETO-MARIO-ENCANADOR/",
+    tags: ["HTML5", "CSS3", "JavaScript"]
   },
   {
     title: "Site Transportadora",
-    category: "Logística • Institucional",
+    category: "Landing Page • Logística Institucional",
     image: new URL('../assets/transportadora.png', import.meta.url).href,
     description: "Foco em logística internacional com design responsivo e moderno.",
-    link: "https://nicholas10souza.github.io/PROJETO-TRANSPORTADORA/"
+    link: "https://nicholas10souza.github.io/PROJETO-TRANSPORTADORA/",
+    tags: ["HTML5", "CSS3", "JavaScript"]
   },
   {
     title: "E-commerce Moderno",
-    category: "E-commerce • UI/UX",
+    category: "Landing Page • E-commerce",
     image: new URL('../assets/E-commerce.png', import.meta.url).href,
     description: "Plataforma de vendas completa com foco em UI/UX e catálogo de produtos.",
-    link: "https://nicholas10souza.github.io/PROJETO-ECOMMERCE/"
+    link: "https://nicholas10souza.github.io/PROJETO-ECOMMERCE/",
+    tags: ["HTML5", "CSS3", "JavaScript"]
   },
   {
     title: "NS Financeira",
-    category: "Tailwind • Landing Page",
+    category: "Landing Page • Financeiro",
     image: new URL('../assets/site-desktop-Note.png', import.meta.url).href,
     description: "Desenvolvido com Tailwind CSS, focado em produtos do setor financeiro.",
-    link: "https://nicholas10souza.github.io/PROJETO-FINANCEIRA/"
+    link: "https://nicholas10souza.github.io/PROJETO-FINANCEIRA/",
+    tags: ["Tailwind", "JavaScript", "AOS"]
   },
   {
     title: "Portfólio Nicholas v1",
     category: "Legacy • Portfólio",
     image: new URL('../assets/site-desktop-portfolio.png', import.meta.url).href,
     description: "Minha primeira vitrine profissional, construída com HTML, CSS e JS puro.",
-    link: "https://nicholas10souza.github.io/PROJETO-PORTFOLIO/"
+    link: "https://nicholas10souza.github.io/PROJETO-PORTFOLIO/",
+    tags: ["HTML5", "CSS3", "JavaScript"]
+  },
+  {
+    title: "Mon Amour",
+    category: "Landing Page • Gastronomia Premium",
+    image: new URL('../assets/site-desktop-restaurante.png', import.meta.url).href,
+    description: "Experiência gastronômica de luxo com influências franco-brasileiras e sistema de reservas.",
+    link: "https://nicholas10souza.github.io/PROJETO-RESTAURANTE/",
+    tags: ["React 19", "Tailwind v4", "Framer Motion"]
   }
 ];
 
@@ -84,25 +97,40 @@ const Projects = () => {
               </div>
 
               {/* Conteúdo do Card */}
-              <div className="p-6 md:p-8">
-                <span className="text-magnate-gold text-[10px] uppercase tracking-widest font-bold">
-                  {project.category}
-                </span>
-                <h3 className="text-xl md:text-2xl font-bold text-white mt-2 mb-4 group-hover:text-magnate-gold transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 text-sm mb-6 leading-relaxed line-clamp-2">
-                  {project.description}
-                </p>
-                <a 
-                  href={project.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-white text-xs font-bold hover:gap-4 transition-all"
-                >
-                  ACESSAR PROJETO <ExternalLink size={14} className="text-magnate-gold" />
-                </a>
-              </div>
+<div className="p-6 md:p-8">
+  <span className="text-magnate-gold text-[10px] uppercase tracking-widest font-bold">
+    {project.category}
+  </span>
+  
+  <h3 className="text-xl md:text-2xl font-bold text-white mt-2 mb-4 group-hover:text-magnate-gold transition-colors">
+    {project.title}
+  </h3>
+  
+  <p className="text-gray-400 text-sm mb-6 leading-relaxed line-clamp-2">
+    {project.description}
+  </p>
+
+  {/* COLOQUE AQUI: Badges de Tecnologia */}
+  <div className="flex flex-wrap gap-2 mb-6">
+    {project.tags.map((tag) => (
+      <span 
+        key={tag} 
+        className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-magnate-gold font-medium uppercase tracking-wider"
+      >
+        {tag}
+      </span>
+    ))}
+  </div>
+
+  <a 
+    href={project.link} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-2 text-white text-xs font-bold hover:gap-4 transition-all"
+  >
+    ACESSAR PROJETO <ExternalLink size={14} className="text-magnate-gold" />
+  </a>
+</div>
             </motion.div>
           ))}
         </div>
