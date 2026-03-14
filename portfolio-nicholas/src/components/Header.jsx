@@ -71,27 +71,35 @@ const Header = () => {
         </button>
 
         {/* Menu Mobile Overlay */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="absolute top-full left-0 w-full bg-black/95 border-b border-magnate-gold/20 flex flex-col items-center py-8 z-40 md:hidden overflow-hidden"
-            >
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-white/80 hover:text-magnate-gold text-sm py-4 uppercase tracking-[0.2em] font-bold"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+<AnimatePresence>
+  {isOpen && (
+    <motion.div
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: 'auto' }}
+      exit={{ opacity: 0, height: 0 }}
+      className="absolute top-full left-0 w-full bg-black/95 border-b border-magnate-gold/20 flex flex-col items-center py-8 z-40 md:hidden overflow-hidden"
+    >
+      {navLinks.map((link) => (
+        <a
+          key={link.name}
+          href={link.href}
+          onClick={(e) => {
+            e.preventDefault(); // Impede o pulo seco do link
+            setIsOpen(false);   // Fecha o menu primeiro
+            
+            // Procura a seção e rola suavemente
+            const targetId = link.href.replace('#', '');
+            const elem = document.getElementById(targetId);
+            elem?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="text-white/80 hover:text-magnate-gold text-sm py-4 uppercase tracking-[0.2em] font-bold w-full text-center"
+        >
+          {link.name}
+        </a>
+      ))}
+    </motion.div>
+  )}
+</AnimatePresence>
       </div>
     </header>
   );
